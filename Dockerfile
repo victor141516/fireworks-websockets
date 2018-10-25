@@ -6,4 +6,5 @@ RUN apk add --no-cache gcc musl-dev
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
 RUN apk del gcc musl-dev
+
 CMD [ "gunicorn", "-k geventwebsocket.gunicorn.workers.GeventWebSocketWorker", "-w4", "-b", ":8080", "main:app" ]
